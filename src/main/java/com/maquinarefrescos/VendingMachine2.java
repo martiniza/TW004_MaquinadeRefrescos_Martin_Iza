@@ -2,45 +2,93 @@ package com.maquinarefrescos;
 
 public class VendingMachine2 {
 
-	//variables
-	/**
-	 *  Hay que sustituir refresco por un array de refrescos
-	 *  solo va a tener 3 refrescos: agua, zumo, cola
-	 */
-		// Estado de la máquina
+	// variables
+ Refresco refresco;
+	double dineroIng;
 	
+	// Estado de la máquina
+
 	private double cambios;
-	Refresco mirefresco;
-	
-		// Informe de ventas
+
+	// Informe de ventas
 	private double dineroRecaudado;
 	private int refrescosVendidos;
-	
-	//Constructores
-	
-//	Refresco[] misrefrescos = {
-//			new Refresco(20,80,"Agua"),
-//			new Refresco(10,120,"Zumo"),
-//			new Refresco(10,120,"Cola")};
-//	
-	//Metodos
-	
-	public boolean expenderRefresco(float dinero){
-		Refresco agua = new Refresco(50,0.8f, "Agua" );
-		++refrescosVendidos;
-		return true;
-		
+
+	// Constructores
+
+	public VendingMachine2(Refresco[] refresco, double cambiosIni) {
+		super();
+		this.dineroRecaudado = 0;
+		this.refrescosVendidos = 0;
+		this.cambios = cambiosIni;
 	}
 	
-	//Aquí esta la ejecución del main class
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		
-			
-		
+	Refresco[] misrefrescos = {
+			new Refresco(20,80,"Agua"),
+			new Refresco(10,120,"Zumo"),
+			new Refresco(10,120,"Cola")};
 	
-		
+	VendingMachine2 Maquina = new VendingMachine2(misrefrescos, 3000);
+
+	// Metodos
+
+	public double vender(Refresco refresco, double dineroIng) {
+
+		double cambioEsperado = dineroIng - refresco.getPrecio();
+
+		if (refresco.getUnidades() <= 0) {
+			return -1; 									//excepción sin Stock
+		} else if (this.cambios < cambioEsperado) {
+			return -2; 									//excepción sin cambios
+		} else if (dineroIng <= refresco.getPrecio()) {
+			return -3; 									//excepción dinero insuficiente
+		} else {
+
+			--refresco.unidadesStock;					// Cambios en el Stock
+
+			cambios -= cambioEsperado;					// Cambio en los cambios
+
+			++refrescosVendidos;						// Cambio en estado de maquina
+			dineroRecaudado += refresco.getPrecio();
+
+			return cambioEsperado;
+		}
+	}
+
+	public String informeVentas() {
+		return "La cantidad de refrescos vendida es" + refrescosVendidos +
+				"; El dinero recaudado es "+ dineroRecaudado;
+	}
+
+	public String estadoMaquina(Refresco refresco) {
+		return "La cantidad de refrescos restante es " + refresco.getUnidades() +
+				"; La cantidad de cambio restante es " + cambios;
+	}
+
+	public Refresco getRefresco() {
+		return refresco;
+	}
+
+	public double getDineroIng() {
+		return dineroIng;
+	}
+
+	public double getDineroRecaudado() {
+		return dineroRecaudado;
+	}
+
+	public int getRefrescosVendidos() {
+		return refrescosVendidos;
+	}
+
+	public double getCambios() {
+		return cambios;
+	}
+
+	// Aquí esta la ejecución del main class
+	public static void main(String[] args) {
+
+
 	}
 
 }

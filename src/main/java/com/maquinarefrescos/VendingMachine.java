@@ -24,14 +24,17 @@ public class VendingMachine {
 		this.cambios = cambiosIni;
 	}
 	
-	Refresco agua = new Refresco(50, 80, "Agua");
-	VendingMachine Maquina = new VendingMachine(agua, 3000);
+
 
 	// Metodos
 
 	public double vender(Refresco refresco, double dineroIng) {
 
 		double cambioEsperado = dineroIng - refresco.getPrecio();
+		
+		System.out.println(dineroIng);
+		System.out.println(refresco.getPrecio());
+		System.out.println(this.cambios);
 
 		if (refresco.getUnidades() <= 0) {
 			return -1; 									//excepción sin Stock
@@ -43,7 +46,7 @@ public class VendingMachine {
 
 			--refresco.unidadesStock;					// Cambios en el Stock
 
-			cambios -= cambioEsperado;					// Cambio en los cambios
+			cambios -= cambioEsperado;
 
 			++refrescosVendidos;						// Cambio en estado de maquina
 			dineroRecaudado += refresco.getPrecio();
@@ -84,6 +87,7 @@ public class VendingMachine {
 
 	// Aquí esta la ejecución del main class
 	public static void main(String[] args) {
+
 
 
 	}

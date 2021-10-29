@@ -32,10 +32,6 @@ public class VendingMachine {
 
 		double cambioEsperado = dineroIng - refresco.getPrecio();
 		
-		System.out.println(dineroIng);
-		System.out.println(refresco.getPrecio());
-		System.out.println(this.cambios);
-
 		if (refresco.getUnidades() <= 0) {
 			return -1; 									//excepción sin Stock
 		} else if (this.cambios < cambioEsperado) {

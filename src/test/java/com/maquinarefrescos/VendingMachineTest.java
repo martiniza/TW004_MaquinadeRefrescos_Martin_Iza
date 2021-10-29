@@ -90,8 +90,7 @@ public class VendingMachineTest {
 	
 	
 	
-	
-	
+
 	@Test
 	public void testdeEJecuciondelaventa() {
 		
@@ -109,7 +108,7 @@ public class VendingMachineTest {
 		
 		if (cambioRecibido != cambioEspero){
 			
-			fail("Error en la prueba, los cambios recibidos no estan bien");}
+			fail("Error en la prueba, algo no ha salido bien");}
 		}
 	}
 	

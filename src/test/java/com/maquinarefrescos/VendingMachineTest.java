@@ -26,6 +26,29 @@ public class VendingMachineTest {
 	public void tearDown() throws Exception {
 	}
 	
+	
+	@Test
+	public void testVENDERSINSTOCK() {
+		/**
+		 * Estamos intentando vender de la maquina sin que le quede stock. 
+		 */
+		
+		Refresco re = new Refresco(0, 80, "Agua");	     // Crear el objeto refresco
+		VendingMachine ve=new VendingMachine(re, 1000);   // Crear el objeto maquina de refrescos
+		
+		
+		//Ejecutar la venta sobre la maquina "ve", compramos con 100 cts un refresco
+		
+		
+		double valorEsperado = -1;
+		
+		double valorRecibido = ve.vender(re, 100); // Ahora mismo yo espero que esto me devuelva -1
+		
+		if (valorRecibido != valorEsperado) {
+			
+			fail("Error en la prueba, deberia devolver -1");}
+	}
+	
 	@Test
 	public void testSinCAMBIOSUFICIENTEENLAMAQUINA() {
 		
@@ -48,29 +71,25 @@ public class VendingMachineTest {
 		fail("Error en la prueba, debería recibir -2");}
 	}
 	
-	
-	
 	@Test
-	public void testVENDERSINSTOCK() {
-		/**
-		 * Estamos intentando vender de la maquina sin que le quede stock. 
-		 */
+	public void testDinerodinsuficiente() {
+	
 		
-	Refresco re = new Refresco(0, 80, "Agua");	     // Crear el objeto refresco
+	Refresco re = new Refresco(50, 80, "Agua");	     // Crear el objeto refresco
 	VendingMachine ve=new VendingMachine(re, 1000);   // Crear el objeto maquina de refrescos
 	
+	double valorEsperado = -3;
+	//Ejecutar la venta sobre la maquina "ve", compramos con 10 cts un refresco
 	
-	//Ejecutar la venta sobre la maquina "ve", compramos con 100 cts un refresco
-	
-	
-	double valorEsperado = -1;
-	
-	double valorRecibido = ve.vender(re, 100); // Ahora mismo yo espero que esto me devuelva -1
+	double valorRecibido = ve.vender(re, 10); // Ahora mismo yo espero que esto me devuelva -3
 	
 	if (valorRecibido != valorEsperado) {
 	
-		fail("Error en la prueba, deberia devolver -1");}
+		fail("Error en la prueba, deberia devolver -3");}
 	}
+	
+	
+	
 	
 	
 	@Test

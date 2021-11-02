@@ -87,9 +87,6 @@ public class VendingMachineTest {
 	
 		fail("Error en la prueba, deberia devolver -3");}
 	}
-	
-	
-	
 
 	@Test
 	public void testdeEJecuciondelaventa() {

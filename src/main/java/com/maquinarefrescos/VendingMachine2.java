@@ -7,10 +7,7 @@ public class VendingMachine2 {
 
 	// variables
 
-	Refresco[] misrefrescos = {
-			new Refresco(20,80,"Agua"),
-			new Refresco(10,120,"Zumo"),
-			new Refresco(10,120,"Cola")};
+	Refresco[] misrefrescos;
 	double dineroIng;
 
 	// Estado de la máquina
@@ -70,8 +67,8 @@ public class VendingMachine2 {
 				+ dineroRecaudado;
 	}
 
-	public String estadoMaquina(Refresco refresco) {
-		return "La cantidad de refrescos restante es " + refresco.getUnidades() + "; La cantidad de cambio restante es "
+	public String estadoMaquina(int i) {
+		return "La cantidad de refrescos restante es " + misrefrescos[i].getUnidades() + "; La cantidad de cambio restante es "
 				+ cambios;
 	}
 
@@ -97,6 +94,15 @@ public class VendingMachine2 {
 
 	// Aquí esta la ejecución del main class
 	public static void main(String[] args) {
+		
+		Refresco[] misrefrescos = {
+				new Refresco(20,80,"Agua"),
+				new Refresco(10,120,"Zumo"),
+				new Refresco(10,120,"Cola")};
+		
+		VendingMachine2 machine = new VendingMachine2(misrefrescos,2000);
+		
+		machine.vender(0, 200);
 
 	}
 

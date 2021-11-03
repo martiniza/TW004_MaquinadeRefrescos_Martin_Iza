@@ -49,7 +49,8 @@ public class VendingMachine {
 			// excepción dinero insuficiente
 		} else {
 
-			--refresco.unidadesStock; // Cambios en el Stock
+			--refresco.unidadesStock; // Cambios en el Stock, unidades es privado
+			//TODO cambiar esta declaración
 
 			cambios -= cambioEsperado;
 

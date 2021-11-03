@@ -3,7 +3,7 @@ package com.maquinarefrescos;
 public class Refresco {
 
 	// Atributos
-	public int unidadesStock;
+	private int unidadesStock;
 	private double precio;
 	private String estado;
 	private String nombre;
